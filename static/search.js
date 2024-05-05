@@ -9,6 +9,10 @@ function searchQuestions() {
             const resultsContainer = document.getElementById('results');
             resultsContainer.innerHTML = ''; // 清空当前结果
 
+            // 更新结果数量信息
+            const resultsInfo = document.getElementById('results-info');
+            resultsInfo.textContent = `找到 ${data.length} 道题`;
+
             data.forEach(question => {
                 const questionElement = document.createElement('div');
                 questionElement.classList.add('card', 'p-4', 'rounded-lg', 'shadow', 'fade-in-out', 'mb-4');
