@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "1754:1754"
+    volumes:
+      - .:/app
+    environment:
+      - NAME=World
+    command: python app.py

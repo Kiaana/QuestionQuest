@@ -100,5 +100,5 @@ def index():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # 创建数据库表
-        import_csv('data.csv')  # 导入CSV数据
-    app.run(debug=True)
+        # import_csv('data.csv')  # 导入CSV数据
+    app.run(debug=True, port=1754)

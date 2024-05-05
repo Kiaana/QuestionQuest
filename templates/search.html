@@ -3,21 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>即时查询页面</title>
+    <title>在线题库查询</title>
     <link href="{{ url_for('static', filename='css/tailwind.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='search.js') }}" defer></script>
+    <style>
+        body {
+            background-image: url("your-background-image.jpg"); /* 替换为你的背景图片 */
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .bg-glass {
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+        }
+                /* 添加淡入淡出动画 */
+                .fade-in-out {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* 卡片样式 */
+        #results .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-r from-blue-100 to-gray-100 p-8">
+<body class="bg-gradient-to-r from-pink-100 to-blue-100 p-8">
     <div class="max-w-4xl mx-auto">
         <!-- 顶部导航栏 -->
-        <nav class="bg-white shadow-lg mb-6 rounded-lg p-4">
+        <nav class="bg-glass shadow-lg mb-6 rounded-lg p-4">
             <div class="flex items-center justify-between">
                 <span class="text-xl text-gray-800 font-bold">在线题库查询</span>
             </div>
         </nav>
-
         <!-- 搜索表单卡片 -->
-        <div id="search-form" class="bg-white p-6 rounded-lg shadow-xl mb-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        <div id="search-form" class="bg-glass p-6 rounded-lg shadow-xl mb-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="mb-4 md:mb-0">
                     <label for="question-type" class="block text-lg font-medium text-gray-700">题型</label>
@@ -37,9 +61,8 @@
                 <input id="question-option" type="text" placeholder="输入选项内容" class="mt-1 block w-full p-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
             </div>
         </div>
-
         <!-- 结果展示卡片 -->
-        <div id="results" class="bg-white p-6 rounded-lg shadow-xl">
+        <div id="results" class="bg-glass p-6 rounded-lg shadow-xl">
             <!-- 查询结果将在这里动态插入 -->
         </div>
     </div>
