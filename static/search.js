@@ -14,6 +14,13 @@ function searchQuestions() {
             resultsInfo.textContent = `找到 ${data.length} 道题`;
 
             data.forEach(question => {
+                // 生成章节标识
+                const chapterBadge = document.createElement('span');
+                chapterBadge.classList.add('mb-2', 'px-2', 'py-1', 'rounded-lg', 'text-white', 'font-bold', 'mr-2', 'text-sm');
+                // 设置为绿色背景
+                chapterBadge.classList.add('bg-green-500');
+                chapterBadge.textContent = `${question.chapter}`;
+
                 const questionElement = document.createElement('div');
                 questionElement.classList.add('card', 'p-4', 'rounded-lg', 'shadow', 'fade-in-out', 'mb-4');
 
@@ -38,7 +45,7 @@ function searchQuestions() {
                 });
 
                 questionElement.innerHTML = `
-                    <div class="text-lg font-semibold mb-2">${highlightedContent}</div>
+                    <div class="text-lg font-semibold mb-2">${chapterBadge.outerHTML}${highlightedContent}</div>
                     <div class="text-gray-700">${optionsHtml}</div>
                 `;
 

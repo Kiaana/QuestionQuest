@@ -12,6 +12,7 @@ db = SQLAlchemy(app)
 class Question(db.Model):
     __tablename__ = 'question'
     id = db.Column(db.Integer, primary_key=True)
+    chapter = db.Column(db.String(50)) # 章节
     type = db.Column(db.String(50))  # 'single' or 'multiple'
     content = db.Column(db.Text, nullable=False)
 
@@ -42,6 +43,7 @@ def import_csv(csv_filename):
                 continue  # 如果题目已存在，则跳过此题目
 
             question = Question(
+                chapter=row['chapter'].strip(),
                 type=row['type'].strip(),
                 content=row['content'].strip()
             )
@@ -86,6 +88,7 @@ def search_questions():
         options = [{'content': option.content, 'is_correct': option.is_correct} for option in question.options]
         results.append({
             'id': question.id,
+            'chapter': question.chapter,
             'type': question.type,
             'content': question.content,
             'options': options
@@ -100,5 +103,5 @@ def index():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # 创建数据库表
-        import_csv('data.csv')  # 导入CSV数据
+        import_csv('data1.csv')  # 导入CSV数据
     app.run(debug=True, port=1754)

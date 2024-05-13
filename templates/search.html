@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>在线题库查询</title>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5D8MGW9H');</script>
+    <!-- End Google Tag Manager -->
     <link href="{{ url_for('static', filename='css/tailwind.css') }}" rel="stylesheet">
     <script src="{{ url_for('static', filename='search.js') }}" defer></script>
     <style>
         body {
-            background-image: url("your-background-image.jpg"); /* 替换为你的背景图片 */
+            background-image: url("your-background-image.jpg");
+            /* 替换为你的背景图片 */
             background-size: cover;
             background-attachment: fixed;
         }
+
         .bg-glass {
             background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(5px);
         }
-                /* 添加淡入淡出动画 */
-                .fade-in-out {
+
+        /* 添加淡入淡出动画 */
+        .fade-in-out {
             animation: fadeIn 0.5s ease-in-out;
         }
+
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         /* 卡片样式 */
         #results .card {
             background-color: rgba(255, 255, 255, 0.8);
@@ -32,7 +53,12 @@
         }
     </style>
 </head>
+
 <body class="bg-gradient-to-r from-pink-100 to-blue-100 p-8">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5D8MGW9H" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div class="max-w-4xl mx-auto">
         <!-- 顶部导航栏 -->
         <nav class="bg-glass shadow-lg mb-6 rounded-lg p-4">
@@ -41,11 +67,13 @@
             </div>
         </nav>
         <!-- 搜索表单卡片 -->
-        <div id="search-form" class="bg-glass p-6 rounded-lg shadow-xl mb-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
+        <div id="search-form"
+            class="bg-glass p-6 rounded-lg shadow-xl mb-6 transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-105">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="mb-4 md:mb-0">
                     <label for="question-type" class="block text-lg font-medium text-gray-700">题型</label>
-                    <select id="question-type" class="mt-1 block w-full p-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                    <select id="question-type"
+                        class="mt-1 block w-full p-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent">
                         <option value="">选择题型</option>
                         <option value="single">单选题</option>
                         <option value="multiple">多选题</option>
@@ -53,12 +81,14 @@
                 </div>
                 <div class="md:col-span-2">
                     <label for="question-content" class="block text-lg font-medium text-gray-700">题目内容</label>
-                    <input id="question-content" type="text" placeholder="输入题目内容" class="mt-1 block w-full p-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                    <input id="question-content" type="text" placeholder="输入题目内容"
+                        class="mt-1 block w-full p-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
                 </div>
             </div>
             <div class="mt-4">
                 <label for="question-option" class="block text-lg font-medium text-gray-700">选项内容（可选）</label>
-                <input id="question-option" type="text" placeholder="输入选项内容" class="mt-1 block w-full p-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
+                <input id="question-option" type="text" placeholder="输入选项内容"
+                    class="mt-1 block w-full p-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" />
             </div>
         </div>
         <!-- 结果展示卡片 -->
@@ -73,4 +103,5 @@
         </footer>
     </div>
 </body>
+
 </html>
